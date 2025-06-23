@@ -32,7 +32,7 @@ export default function Hero(){
 
             <div className="px-4 mx-auto text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36">
               <span className="font-semibold text-gray-400 uppercase">
-                PERPUSTAKAAN MITRA
+                E-PERPUSTAKAAN
               </span>
               <div className="flex flex-col items-center mt-8 text-gray-700 dark:text-gray-300">
                 {/* Ikon Utama */}

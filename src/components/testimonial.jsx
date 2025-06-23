@@ -17,13 +17,13 @@ export default function Testimonial(){
             </svg>
             <blockquote>
               <p className="text-2xl font-medium text-gray-900 dark:text-white">
-                "Jika kamu ingin anakmu menjadi cerdas, bacakan dongeng. Jika kamu ingin dia lebih cerdas, bacakan lebih banyak dongeng."
+                "Masa depan suatu bangsa tergantung dari sejauh mana bangsanya menghargai ilmu pengetahuan dan pendidikan. <br />Membaca adalah awal dari semua itu."
               </p>
             </blockquote>
             <figcaption className="flex items-center justify-center mt-6 space-x-3">
               <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
                 <div className="pr-3 font-medium text-gray-900 dark:text-white">
-                  - Albert Einstein
+                  - B.J. Habibie
                 </div>
               </div>
             </figcaption>

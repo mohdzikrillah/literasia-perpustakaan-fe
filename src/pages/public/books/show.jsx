@@ -8,7 +8,7 @@ export default function ShowBook() {
 
   const {id} = useParams();
   const [book, setBook] = useState({});
-  const [lostOfBook, setLosOfBook] = useState(1)
+  const [lostOfBook] = useState(1)
 
 
   const navigate =useNavigate();
@@ -40,8 +40,12 @@ export default function ShowBook() {
             user_id: userInfo.id,
             lostOfBook: lostOfBook
           }
+          if (lostOfBook >= book.available_stock) {
+              alert("Stock tidak tersedia atau tidak cukup.")
+              navigate("/books")
+            }
           await createBorrowings(payload);
-          alert("Transaction successful")
+          alert("Transaksi berhasil !. Waktu peminjama hanya 7 hari, jika telat anda akan kena denda Rp. 5000 per hari. Terima kasih")
           navigate("/books")
         } catch (error) {
           console.log(error);
@@ -75,21 +79,14 @@ export default function ShowBook() {
                   Stok tersedia: {book.available_stock}
                 </p>
               </div>
+              <hr className="my-6 md:my-8 border-gray-200 dark:border-gray-800"/>
+              Sinopsis: <br />
+              {book.synopsis}
+
               <div className="mt-6 sm:gap-4 sm:items-center sm:flex sm:mt-8">
                 <form 
                 onSubmit={handleSubmit} 
                 className="mt-6 sm:mt-8 space-y-4">
-                  <div>
-                    <label htmlFor="lostOfBook" className="block text-sm font-medium leading-none text-gray-900 dark:text-white">Jumlah Pinjam</label>
-                    <input 
-                    type="number" 
-                    id="lostOfBook" 
-                    name="lostOfBook" 
-                    min={1} 
-                    value={lostOfBook}
-                    onChange={(e)=> setLosOfBook(e.target.value)} 
-                    className="mt-1 block w-24 px-3 py-2 border border-gray-300 rounded-md shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:outline-none focus:ring-primary-300 focus:border-gray-300 sm:text-sm"/>
-                  </div>
                   <button
                     type="submit"
                     className="text-white mt-4 sm:mt-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 flex items-center justify-center"
@@ -98,10 +95,7 @@ export default function ShowBook() {
                   </button>
                 </form>
               </div>
-              <hr className="my-6 md:my-8 border-gray-200 dark:border-gray-800"/>
-              {book.synopsis}
             </div>
-            
           </div>
           <Outlet/>
         </div>
